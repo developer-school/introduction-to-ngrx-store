@@ -1,25 +1,22 @@
 <div id="wrapper">
-  <div id="shopping-list" *ngIf="!(error$ | async); else error">
-    <div id="list">
-      <h2>Shopping List</h2>
 
-      <div *ngIf="!(loading$ | async); else loading">
+
+  <div [class.loading]="(loading$ | async)" id="shopping-list" *ngIf="!(error$ | async); else error">
+    <div id="list">
+      <h2>
+        Shopping List
+      </h2>
+
+
         <ul *ngIf="(shoppingItems | async)?.length != 0; else noItems">
           <li *ngFor="let shopping of shoppingItems | async" (click)="deleteItem(shopping.id)">
             <span>{{ shopping.name }}</span>
           </li>
         </ul>
-      </div>
 
       <ng-template #noItems>
         <ul>
           <li style="max-width:250px;margin:0 auto;">No items found. Are you sure there's <em>nothing</em> you want?</li>
-        </ul>
-      </ng-template>
-
-      <ng-template #loading>
-        <ul>
-          <li>Loading...</li>
         </ul>
       </ng-template>
     </div>

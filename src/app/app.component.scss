@@ -14,6 +14,10 @@
   box-shadow: 20px 20px 0px #222f3e;
 }
 
+.loading {
+  box-shadow: 20px 20px 0px pink !important;
+}
+
 form {
   display: flex;
   flex-direction: row;
