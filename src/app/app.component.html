@@ -3,11 +3,17 @@
     <div id="list">
       <h2>Shopping List</h2>
 
-      <ul>
+      <ul *ngIf="!(loading$ | async); else load">
         <li *ngFor="let shopping of shoppingItems | async" (click)="deleteItem(shopping.id)">
           {{ shopping.name }}
         </li>
       </ul>
+
+      <ng-template #load>
+        <ul>
+          <li>Loading...</li>
+        </ul>
+      </ng-template>
     </div>
 
     <form (ngSubmit)="addItem()">
