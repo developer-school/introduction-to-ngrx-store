@@ -9,12 +9,18 @@ import { delay } from 'rxjs/operators';
 })
 export class ShoppingService {
 
+  private SHOPPING_URL = "http://localhost:3000/shopping"
+
   constructor(private http: HttpClient) { }
 
   getShoppingItems() {
-    return this.http.get<Array<ShoppingItem>>(`http://localhost:3000/shopping`)
+    return this.http.get<Array<ShoppingItem>>(this.SHOPPING_URL)
       .pipe(
       delay(2000)
     )
+  }
+
+  addShoppingItem(shoppingItem: ShoppingItem) {
+    return this.http.post(this.SHOPPING_URL, shoppingItem);
   }
 }

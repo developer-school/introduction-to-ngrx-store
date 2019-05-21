@@ -35,7 +35,22 @@ export function ShoppingReducer(state: ShoppingState = initialState, action: Sho
       }
     
     case ShoppingActionTypes.ADD_ITEM:
-      return { ...state, list: action.payload };
+      return {
+        ...state,
+        loading: true
+      }
+    case ShoppingActionTypes.ADD_ITEM_SUCCESS:
+      return {
+        ...state,
+        list: [...state.list, action.payload],
+        loading: false
+      };
+    case ShoppingActionTypes.ADD_ITEM_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false
+      };
     case ShoppingActionTypes.DELETE_ITEM:
       return {
         ...state,
