@@ -9,7 +9,9 @@ export enum ShoppingActionTypes {
   ADD_ITEM = '[SHOPPING] Add Item',
   ADD_ITEM_SUCCESS = '[SHOPPING] Add Item Success',
   ADD_ITEM_FAILURE = '[SHOPPING] Add Item Failure',
-  DELETE_ITEM = '[SHOPPING] Delete Item'
+  DELETE_ITEM = '[SHOPPING] Delete Item',
+  DELETE_ITEM_SUCCESS = '[SHOPPING] Delete Item Success',
+  DELETE_ITEM_FAILURE = '[SHOPPING] Delete Item Failure'
 }
 
 export class LoadShoppingAction implements Action {
@@ -43,12 +45,29 @@ export class AddItemFailureAction implements Action {
   constructor(public payload: Error) { }
 }
 
-
-
 export class DeleteItemAction implements Action {
   readonly type = ShoppingActionTypes.DELETE_ITEM
 
   constructor(public payload: string) { }
 }
 
-export type ShoppingAction = AddItemAction | AddItemSuccessAction | AddItemFailureAction | DeleteItemAction | LoadShoppingAction | LoadShoppingFailureAction | LoadShoppingSuccessAction
+export class DeleteItemSuccessAction implements Action {
+  readonly type = ShoppingActionTypes.DELETE_ITEM_SUCCESS
+
+  constructor(public payload: string) { }
+}
+export class DeleteItemFailureAction implements Action {
+  readonly type = ShoppingActionTypes.DELETE_ITEM_FAILURE
+
+  constructor(public payload: string) { }
+}
+
+export type ShoppingAction = AddItemAction |
+  AddItemSuccessAction |
+  AddItemFailureAction |
+  DeleteItemAction |
+  DeleteItemSuccessAction |
+  DeleteItemFailureAction |
+  LoadShoppingAction |
+  LoadShoppingFailureAction |
+  LoadShoppingSuccessAction

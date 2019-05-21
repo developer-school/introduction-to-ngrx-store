@@ -1,16 +1,3 @@
 {
-  "shopping": [
-    {
-      "id": 1,
-      "name": "Diet Coke"
-    },
-    {
-      "id": 2,
-      "name": "Pepsi Max"
-    },
-    {
-      "id": "7fbadd85-c7b1-430c-89ed-e3a95b5a6a86",
-      "name": "Cheesecake"
-    }
-  ]
+  "shopping": []
 }

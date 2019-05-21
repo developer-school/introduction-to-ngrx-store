@@ -23,4 +23,8 @@ export class ShoppingService {
   addShoppingItem(shoppingItem: ShoppingItem) {
     return this.http.post(this.SHOPPING_URL, shoppingItem);
   }
+
+  deleteShoppingItem(id: string) {
+    return this.http.delete(`${this.SHOPPING_URL}/${id}`);
+  }
 }
