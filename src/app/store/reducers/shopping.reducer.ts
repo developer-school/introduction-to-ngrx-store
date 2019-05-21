@@ -1,6 +1,10 @@
 import { ShoppingActionTypes, ShoppingAction } from '../actions/shopping.actions';
 import { ShoppingItem } from '../models/shopping-item.model';
-import { ShoppingState } from '../models/shopping.model';
+
+export interface ShoppingState {
+  list: ShoppingItem[],
+  loading: boolean
+}
 
 
 const initialState: ShoppingState = {
