@@ -7,8 +7,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { ShoppingReducer } from './store/reducers/shopping.reducer';
 
-import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
-import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
+
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
@@ -21,6 +20,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     StoreModule.forRoot({
       shopping: ShoppingReducer
     }),
