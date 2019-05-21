@@ -16,15 +16,21 @@ export class ShoppingService {
   getShoppingItems() {
     return this.http.get<Array<ShoppingItem>>(this.SHOPPING_URL)
       .pipe(
-      delay(2000)
+      delay(500)
     )
   }
 
   addShoppingItem(shoppingItem: ShoppingItem) {
-    return this.http.post(this.SHOPPING_URL, shoppingItem);
+    return this.http.post(this.SHOPPING_URL, shoppingItem)
+      .pipe(
+        delay(500)
+      )
   }
 
   deleteShoppingItem(id: string) {
-    return this.http.delete(`${this.SHOPPING_URL}/${id}`);
+    return this.http.delete(`${this.SHOPPING_URL}/${id}`)
+      .pipe(
+        delay(500)
+      )
   }
 }
