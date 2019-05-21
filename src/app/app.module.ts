@@ -14,13 +14,10 @@ import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
-    ShoppingItemComponent,
-    ShoppingFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
     StoreModule.forRoot({
       shopping: ShoppingReducer
     }),
