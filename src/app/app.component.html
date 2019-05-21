@@ -1,21 +1,15 @@
 <div id="wrapper">
-  <div id="shopping-list">
+  <div id="shopping-list" *ngIf="!(error$ | async); else error">
     <div id="list">
       <h2>Shopping List</h2>
 
-      <div *ngIf="!(error$ | async); else error">
+      <div>
         <ul *ngIf="!(loading$ | async); else loading">
           <li *ngFor="let shopping of shoppingItems | async" (click)="deleteItem(shopping.id)">
             <span>{{ shopping.name }}</span>
           </li>
         </ul>
       </div>
-
-      <ng-template #error>
-        <ul>
-          <li>{{(error$ | async)?.message}}</li>
-        </ul>
-      </ng-template>
 
       <ng-template #loading>
         <ul>
@@ -31,3 +25,6 @@
   </div>
 </div>
 
+<ng-template #error>
+  <h2>{{(error$ | async)?.message}}</h2>
+</ng-template>
