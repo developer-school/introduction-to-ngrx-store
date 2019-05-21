@@ -16,13 +16,15 @@ export class AppComponent implements OnInit {
   
   shoppingItems: Observable<Array<ShoppingItem>>;
   loading$: Observable<Boolean>;
+  error$: Observable<Error>
   newShoppingItem: ShoppingItem = { id: '', name: '' }
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
     this.shoppingItems = this.store.select(store => store.shopping.list);
-    this.loading$ = this.store.select(store => store.shopping.loading)
+    this.loading$ = this.store.select(store => store.shopping.loading);
+    this.error$ = this.store.select(store => store.shopping.error);
 
     this.store.dispatch(new LoadShoppingAction());
   }

@@ -3,13 +3,15 @@ import { ShoppingItem } from '../models/shopping-item.model';
 
 export interface ShoppingState {
   list: ShoppingItem[],
-  loading: boolean
+  loading: boolean,
+  error: Error;
 }
 
 
 const initialState: ShoppingState = {
   list: [],
-  loading: false
+  loading: false,
+  error: undefined
 };
 
 export function ShoppingReducer(state: ShoppingState = initialState, action: ShoppingAction) {
@@ -24,6 +26,12 @@ export function ShoppingReducer(state: ShoppingState = initialState, action: Sho
         ...state,
         list: action.payload,
         loading: false
+      }
+    
+    case ShoppingActionTypes.LOAD_SHOPPING_FAILURE: 
+      return {
+        ...state,
+        error: action.payload
       }
     
     case ShoppingActionTypes.ADD_ITEM:

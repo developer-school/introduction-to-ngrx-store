@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { map, mergeMap } from 'rxjs/operators';
+import { map, mergeMap, catchError } from 'rxjs/operators';
 
-import { LoadShoppingAction, ShoppingActionTypes, LoadShoppingSuccessAction } from '../actions/shopping.actions'
+import { LoadShoppingAction, ShoppingActionTypes, LoadShoppingSuccessAction, LoadShoppingFailureAction } from '../actions/shopping.actions'
 import { of } from 'rxjs';
 import { ShoppingService } from 'src/app/shopping.service';
 
@@ -17,7 +17,8 @@ export class ShoppingEffects {
           .pipe(
             map(data => {
               return new LoadShoppingSuccessAction(data)
-            })
+            }),
+            catchError(error => of(new LoadShoppingFailureAction(error)))
           )
       ),
     )
