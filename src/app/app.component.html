@@ -1,14 +1,11 @@
 <div id="wrapper">
-
-
   <div [class.loading]="(loading$ | async)" id="shopping-list" *ngIf="!(error$ | async); else error">
     <div id="list">
       <h2>
         Shopping List
       </h2>
 
-
-        <ul *ngIf="(shoppingItems | async)?.length != 0; else noItems">
+        <ul *ngIf="(shoppingItems | async); else noItems">
           <li *ngFor="let shopping of shoppingItems | async" (click)="deleteItem(shopping.id)">
             <span>{{ shopping.name }}</span>
           </li>
